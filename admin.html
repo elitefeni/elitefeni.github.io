@@ -8,94 +8,175 @@
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--pine:#0f3d36;--gold:#b8862b;--line:#d3dfda;--bg:#f5f8f6;--mut:#52635d}
-*{box-sizing:border-box}
+*{box-sizing:border-box}[hidden]{display:none!important}
 body{margin:0;font:16px/1.6 'Hind Siliguri',sans-serif;background:var(--bg);color:#16241f}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-header{background:var(--pine);color:#fff;padding:12px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-header b{font-size:19px}
+header{background:var(--pine);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:12px}
+header h1{font-size:19px;margin:0;flex:1}
 main{padding:20px;max-width:1300px;margin:0 auto}
-input,select,textarea{padding:8px 10px;border:1px solid #b9c9c3;border-radius:6px;font:inherit;background:#fff;max-width:100%}
+input,select,textarea{padding:8px 10px;border:1px solid #b9c9c3;border-radius:6px;font:inherit;background:#fff;max-width:100%;width:100%}
 button{font:600 15px 'Hind Siliguri',sans-serif;padding:8px 16px;border:0;border-radius:6px;background:var(--pine);color:#fff;cursor:pointer}
-button.g{background:var(--gold);color:#1b1405}button.o{background:transparent;color:#fff;border:1px solid #fff}button.x{background:#8a1f11}
+button.g{background:var(--gold);color:#1b1405}button.o{background:transparent;color:#fff;border:1px solid #fff}button.x{background:#8a1f11;padding:4px 10px}
+.ic{padding:6px 8px;line-height:0}
 .login{max-width:340px;margin:12vh auto;background:#fff;padding:28px;border-radius:10px;border-top:6px solid var(--gold)}
-.login input{width:100%;margin:10px 0 14px}
-.tabs{display:flex;gap:8px;margin-bottom:16px}
-.tabs button{background:#fff;color:var(--pine);border:1px solid var(--line)}.tabs button.on{background:var(--pine);color:#fff}
-.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
-.tw{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:8px}
-table{border-collapse:collapse;width:100%;min-width:900px}
-th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:15px}
+.login input{margin:6px 0 12px}
+.dr{position:fixed;top:0;left:0;bottom:0;width:250px;background:#fff;transform:translateX(-100%);transition:transform .2s;z-index:20;padding:14px;overflow:auto;box-shadow:2px 0 12px #0003}
+.dr.on{transform:none}.dr b{display:block;margin:4px 0 10px;color:var(--pine)}
+.dr button{display:block;width:100%;text-align:left;background:none;color:var(--pine);padding:11px 12px;margin-bottom:2px}
+.dr button.on{background:#e7efeb;font-weight:600}
+.ov{position:fixed;inset:0;background:#0006;z-index:10;display:none}.ov.on{display:block}
+@media(prefers-reduced-motion:reduce){.dr{transition:none}}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}.bar>*{width:auto}
+.fm{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;align-items:end;background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px;margin:12px 0}
+.fm label{font-size:14px;color:var(--mut)}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--line);border-radius:8px;margin-bottom:16px}
+table{border-collapse:collapse;width:100%}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;font-size:15px}
 th{background:#e7efeb}
 td input{width:96px}td input.nt{width:150px}
-.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:18px}
-.sum div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px}
-.sum small{color:var(--mut);display:block}.sum b{font-size:22px}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.sum div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 14px}
+.sum small{color:var(--mut);display:block}.sum b{font-size:21px}
 .msg{padding:8px 12px;border-radius:6px;background:#fbe9e7;color:#8a1f11;margin-bottom:12px;display:none}
-.hide{display:none}
+h2{color:var(--pine);margin:0 0 12px;font-size:20px}h3{margin:14px 0 8px;font-size:17px}
+.lp{height:60px;border:1px dashed #b9c9c3;border-radius:6px;display:block;margin:6px 0;padding:4px;background:#fff}
+@media print{header,.dr,.ov,#rc{display:none!important}}
 </style>
 </head>
 <body>
-<div id="lg" class="login"><h2 style="margin:0">অ্যাডমিন লগইন</h2>
-<form id="lf"><input type="password" id="pw" placeholder="পাসওয়ার্ড" required autocomplete="current-password"><button class="g" type="submit">প্রবেশ করুন</button></form>
+<div id="lg" class="login"><h2>অ্যাডমিন লগইন</h2>
+<form id="lf"><label for="li">মোবাইল নম্বর বা ইমেইল</label><input id="li" required autocomplete="username">
+<label for="pw">পাসওয়ার্ড</label><input type="password" id="pw" required autocomplete="current-password"><button class="g" type="submit">প্রবেশ করুন</button></form>
 <div class="msg" id="lm" style="margin-top:12px"></div></div>
 
-<div id="ap" class="hide">
-<header><b>অ্যাডমিন প্যানেল</b><div><button class="o" id="rf">রিফ্রেশ</button> <button class="o" id="lo">লগআউট</button></div></header>
-<main>
-<div class="msg" id="m"></div>
-<div class="tabs"><button class="on" data-t="a">আবেদন</button><button data-t="h">হিসাব</button></div>
+<div id="ap" hidden>
+<div class="ov" id="ov"></div>
+<aside class="dr" id="dr" aria-label="মেনু"><b>মেনু</b>
+<button data-v="apps">আবেদন</button><button data-v="income">আয়</button><button data-v="expense">ব্যয়</button><button data-v="cash">ক্যাশ</button><button data-v="staff">স্টাফ</button><button data-v="report">রিপোর্ট</button><button data-v="settings">ব্যবস্থাপনা</button><button data-v="admins">অ্যাডমিন</button></aside>
+<header><button class="o ic" id="mb" aria-label="মেনু খুলুন"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+<h1 id="ttl">আবেদন</h1><button class="o" id="rf">রিফ্রেশ</button><button class="o" id="lo">লগআউট</button></header>
+<main><div class="msg" id="m"></div>
 
-<div id="ta">
-<div class="bar"><input id="q" placeholder="নাম, ফোন বা আইডি খুঁজুন"><select id="fs"><option value="">সব স্ট্যাটাস</option></select></div>
-<div class="tw"><table><thead><tr><th>আইডি / তারিখ</th><th>সেবা</th><th>নাম ও ফোন</th><th>বিবরণ</th><th>স্ট্যাটাস</th><th>মোট বিল</th><th>জমা</th><th>বাকি</th><th>নোট</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>
-</div>
+<section id="v-apps"><div class="bar"><input id="q" placeholder="নাম, ফোন বা আইডি খুঁজুন"><select id="fs"><option value="">সব স্ট্যাটাস</option></select></div>
+<div class="tw"><table style="min-width:950px"><thead><tr><th>আইডি / তারিখ</th><th>সেবা</th><th>নাম ও ফোন</th><th>বিবরণ</th><th>স্ট্যাটাস</th><th>মোট বিল</th><th>মোট জমা</th><th>বাকি</th><th>নোট</th><th></th></tr></thead><tbody id="tb"></tbody></table></div></section>
 
-<div id="th" class="hide">
-<div class="sum" id="sm"></div>
-<form class="bar" id="ef"><select id="et"><option>আয়</option><option>ব্যয়</option></select>
-<input id="ed" placeholder="বিবরণ (যেমন অফিস ভাড়া)" required style="flex:1;min-width:180px"><input id="ea" type="number" min="1" placeholder="টাকা" required style="width:120px"><input id="edt" type="date"><button class="g" type="submit">যোগ করুন</button></form>
-<div class="tw"><table style="min-width:600px"><thead><tr><th>তারিখ</th><th>ধরন</th><th>বিবরণ</th><th>টাকা</th><th></th></tr></thead><tbody id="eb"></tbody></table></div>
-</div>
+<section id="v-income" hidden></section>
+<section id="v-expense" hidden></section>
+
+<section id="v-cash" hidden><div class="sum" id="sc"></div>
+<button class="g tg" data-f="fc" data-o="+ নতুন ক্যাশ এন্ট্রি">+ নতুন ক্যাশ এন্ট্রি</button>
+<form id="fc" class="fm" hidden><label>তারিখ<input type="date" name="date" required></label><label>ধরন<select name="type"><option>জমা</option><option>উত্তোলন</option></select></label>
+<label>কোথায় রাখা হলো<select name="place"></select></label><label>টাকা<input type="number" name="amount" min="1" required></label><label>নোট<input name="note" maxlength="200"></label><button class="g">সংরক্ষণ</button></form>
+<div id="lc"></div></section>
+
+<section id="v-staff" hidden>
+<button class="g tg" data-f="fs2" data-o="+ যোগদান ফরম">+ যোগদান ফরম</button> <button class="g tg" data-f="fp" data-o="+ বেতন/ভাতা ফরম">+ বেতন/ভাতা ফরম</button>
+<form id="fs2" class="fm" hidden><label>নাম<input name="name" required maxlength="100"></label><label>পদবি<input name="title" maxlength="60"></label><label>মোবাইল<input name="phone" inputmode="tel" maxlength="20"></label>
+<label>ঠিকানা<input name="address" maxlength="200"></label><label>যোগদানের তারিখ<input type="date" name="joined"></label><label>মূল বেতন<input type="number" name="salary" min="0"></label><button class="g">সংরক্ষণ</button></form>
+<form id="fp" class="fm" hidden><label>স্টাফ<select name="staffId" required></select></label><label>মাস<input type="month" name="month" required></label><label>টাকা<input type="number" name="amount" min="1" required></label>
+<label>তারিখ<input type="date" name="date"></label><label>নোট (বেতন/ভাতা/বোনাস)<input name="note" maxlength="200"></label><button class="g">সংরক্ষণ</button></form>
+<h3>স্টাফ তালিকা</h3><div id="ls"></div><h3>বেতন ও ভাতার তালিকা</h3><div id="lp"></div></section>
+
+<section id="v-report" hidden><div class="bar" id="rc"><select id="rt"><option value="d">দৈনিক</option><option value="m">মাসিক</option><option value="y">বাৎসরিক</option><option value="a">সকল</option></select>
+<input type="date" id="rd" aria-label="তারিখ"><input type="month" id="rm" aria-label="মাস" hidden><input type="number" id="ry" min="2000" max="2100" aria-label="বছর" hidden style="width:110px"><button class="g" id="pr">প্রিন্ট</button></div><div id="ro"></div></section>
+
+<section id="v-settings" hidden><h2>ওয়েবসাইটের তথ্য</h2>
+<button class="g tg" data-f="fset" data-o="তথ্য পরিবর্তন করুন">তথ্য পরিবর্তন করুন</button>
+<form id="fset" class="fm" hidden><label>ওয়েবসাইট/অফিসের নাম<input name="siteName" maxlength="300"></label><label>মোবাইল নম্বর<input name="phone" inputmode="tel" maxlength="300"></label><label>ইমেইল<input type="email" name="email" maxlength="300"></label>
+<label>ঠিকানা<input name="address" maxlength="300"></label><label>অফিস সময়<input name="hours" maxlength="300"></label><label>Facebook লিংক<input type="url" name="facebook" placeholder="https://..." maxlength="300"></label>
+<label>Instagram লিংক<input type="url" name="instagram" placeholder="https://..." maxlength="300"></label><label>YouTube লিংক<input type="url" name="youtube" placeholder="https://..." maxlength="300"></label>
+<div><label>লোগো (ছবি)<input type="file" id="lf2" accept="image/*"></label><img id="lpv" class="lp" alt="লোগো" hidden><button type="button" class="x" id="lrm">লোগো সরান</button></div><button class="g">সংরক্ষণ</button></form>
+<div id="sv"></div></section>
+
+<section id="v-admins" hidden><button class="g tg" data-f="fa" data-o="+ নতুন অ্যাডমিন">+ নতুন অ্যাডমিন</button>
+<form id="fa" class="fm" hidden><label>নাম<input name="name" required maxlength="100"></label><label>পদবি<input name="title" maxlength="60"></label><label>মোবাইল নম্বর (লগইন আইডি)<input name="phone" inputmode="tel" required maxlength="20"></label>
+<label>ইমেইল<input type="email" name="email" maxlength="100"></label><label>ঠিকানা<input name="address" maxlength="200"></label><label>পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)<input type="password" name="password" minlength="6" required autocomplete="new-password"></label><button class="g">সংরক্ষণ</button></form>
+<div id="la"></div></section>
 </main></div>
 
 <script>
 const API='https://script.google.com/macros/s/AKfycbzEzpIXppMRvTq4_zq553jeTH_xszrzz5grkJLes-tx7hIEf_xGkYoABmzjIBAlEVyDXQ/exec';
-const ST=['নতুন','প্রক্রিয়াধীন','কাগজপত্র বাকি','সম্পন্ন','বাতিল'];
-let T=sessionStorage.getItem('t'),apps=[],acc=[];
-const $=s=>document.querySelector(s);
+const ST=['নতুন','প্রক্রিয়াধীন','কাগজপত্র বাকি','সম্পন্ন','বাতিল'],PL=['হাতে নগদ','ব্যাংক','বিকাশ','নগদ','অন্যান্য'];
+const TT={apps:'আবেদন',income:'আয়',expense:'ব্যয়',cash:'ক্যাশ',staff:'স্টাফ',report:'রিপোর্ট',settings:'ব্যবস্থাপনা',admins:'অ্যাডমিন'};
+let T=sessionStorage.getItem('t'),D={apps:[],acc:[],cash:[],staff:[],salaries:[],admins:[],settings:{},me:{}},logo;
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const mny=n=>'৳ '+Number(n||0).toLocaleString('bn-BD');
-function msg(t){const m=$('#m');m.textContent=t;m.style.display=t?'block':'none'}
+const N=v=>Number(v)||0,mny=n=>'৳ '+N(n).toLocaleString('bn-BD'),sum=(a,k)=>a.reduce((t,x)=>t+N(x[k]),0);
+const today=()=>new Date().toLocaleDateString('en-CA');
+const msg=t=>{const m=$('#m');m.textContent=t;m.style.display=t?'block':'none'};
 async function call(d){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify({...d,token:T})});const j=await r.json();
  if(j.auth===false){logout();throw new Error('সেশন শেষ, আবার লগইন করুন')}if(!j.ok)throw new Error(j.error||'ত্রুটি');return j}
-function logout(){T=null;sessionStorage.removeItem('t');$('#lg').classList.remove('hide');$('#ap').classList.add('hide')}
-$('#lo').onclick=logout;
-$('#lf').onsubmit=async e=>{e.preventDefault();try{const j=await call({action:'login',password:$('#pw').value});T=j.token;sessionStorage.setItem('t',T);$('#pw').value='';start()}
- catch(x){const m=$('#lm');m.textContent=x.message;m.style.display='block'}};
-async function start(){$('#lg').classList.add('hide');$('#ap').classList.remove('hide');await load()}
-async function load(){msg('');try{const j=await call({action:'data'});apps=j.apps;acc=j.acc;render()}catch(x){msg(x.message)}}
-$('#rf').onclick=load;
-$('#fs').innerHTML+=ST.map(s=>`<option>${s}</option>`).join('');
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));$('#ta').classList.toggle('hide',b.dataset.t!=='a');$('#th').classList.toggle('hide',b.dataset.t!=='h')});
-$('#q').oninput=$('#fs').onchange=render;
+function logout(){T=null;sessionStorage.removeItem('t');$('#lg').hidden=false;$('#ap').hidden=true}
+const tbl=(h,r,min)=>`<div class="tw"><table style="min-width:${min||500}px"><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${r||`<tr><td colspan="${h.length}">কিছু নেই</td></tr>`}</tbody></table></div>`;
+const del=(a,id)=>`<button class="x" data-d="${a}" data-id="${esc(id)}">মুছুন</button>`;
+const cards=a=>a.map(([l,v])=>`<div><small>${l}</small><b>${v}</b></div>`).join('');
 
-function render(){
- const q=$('#q').value.trim().toLowerCase(),f=$('#fs').value;
- const L=apps.filter(a=>(!f||a.status===f)&&(!q||[a.id,a.name,a.phone].join(' ').toLowerCase().includes(q)));
- $('#tb').innerHTML=L.map(a=>`<tr data-id="${esc(a.id)}"><td>${esc(a.id)}<br><small>${esc(a.date)}</small></td><td>${esc(a.service)}</td>
- <td>${esc(a.name)}<br><a href="tel:${esc(a.phone)}">${esc(a.phone)}</a></td><td style="max-width:220px">${esc(a.details)}</td>
- <td><select class="s">${ST.map(s=>`<option${s===a.status?' selected':''}>${s}</option>`).join('')}</select></td>
- <td><input class="b" type="number" min="0" value="${Number(a.bill)||0}"></td><td><input class="p" type="number" min="0" value="${Number(a.paid)||0}"></td>
- <td>${mny((a.bill||0)-(a.paid||0))}</td><td><input class="nt" value="${esc(a.note)}" maxlength="300"></td><td><button class="sv">সংরক্ষণ</button></td></tr>`).join('')||'<tr><td colspan="10">কোনো আবেদন নেই</td></tr>';
- const sum=(arr,k)=>arr.reduce((t,x)=>t+(Number(x[k])||0),0);
- const inc=sum(acc.filter(x=>x.type==='আয়'),'amount'),exp=sum(acc.filter(x=>x.type==='ব্যয়'),'amount'),bill=sum(apps,'bill'),paid=sum(apps,'paid');
- $('#sm').innerHTML=[['আবেদনের মোট বিল',bill],['আবেদন থেকে জমা',paid],['মোট বাকি',bill-paid],['অন্যান্য আয়',inc],['মোট ব্যয়',exp],['নিট নগদ (জমা + আয় − ব্যয়)',paid+inc-exp]].map(([l,v])=>`<div><small>${l}</small><b>${mny(v)}</b></div>`).join('');
- $('#eb').innerHTML=acc.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.type)}</td><td>${esc(x.desc)}</td><td>${mny(x.amount)}</td><td><button class="x" data-del="${esc(x.id)}">মুছুন</button></td></tr>`).join('')||'<tr><td colspan="5">কোনো এন্ট্রি নেই</td></tr>';
-}
-$('#tb').onclick=async e=>{const b=e.target.closest('.sv');if(!b)return;const tr=b.closest('tr');b.disabled=true;
- try{await call({action:'updateApp',id:tr.dataset.id,status:tr.querySelector('.s').value,bill:tr.querySelector('.b').value,paid:tr.querySelector('.p').value,note:tr.querySelector('.nt').value});await load()}catch(x){msg(x.message)}b.disabled=false};
-$('#ef').onsubmit=async e=>{e.preventDefault();try{await call({action:'addEntry',type:$('#et').value,desc:$('#ed').value,amount:$('#ea').value,date:$('#edt').value});e.target.reset();await load()}catch(x){msg(x.message)}};
-$('#eb').onclick=async e=>{const b=e.target.closest('[data-del]');if(!b||!confirm('এই এন্ট্রি মুছবেন?'))return;try{await call({action:'delEntry',id:b.dataset.del});await load()}catch(x){msg(x.message)}};
+// ---- লগইন / মেনু ----
+$('#lf').onsubmit=async e=>{e.preventDefault();try{const j=await call({action:'login',id:$('#li').value,password:$('#pw').value});T=j.token;sessionStorage.setItem('t',T);$('#pw').value='';start()}
+ catch(x){const m=$('#lm');m.textContent=x.message;m.style.display='block'}};
+$('#lo').onclick=logout;$('#rf').onclick=()=>load();
+const drawer=o=>{$('#dr').classList.toggle('on',o);$('#ov').classList.toggle('on',o)};
+$('#mb').onclick=()=>drawer(true);$('#ov').onclick=()=>drawer(false);
+function view(v){$$('main>section').forEach(s=>s.hidden=s.id!=='v-'+v);$$('.dr button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));$('#ttl').textContent=TT[v];drawer(false)}
+function closeForm(f){f.hidden=true;const b=$('.tg[data-f="'+f.id+'"]');if(b)b.textContent=b.dataset.o}
+document.addEventListener('click',async e=>{
+ const n=e.target.closest('.dr [data-v]');if(n)return view(n.dataset.v);
+ const g=e.target.closest('.tg');if(g){const f=$('#'+g.dataset.f);f.hidden=!f.hidden;g.textContent=f.hidden?g.dataset.o:'ফর্ম বন্ধ করুন';return}
+ const d=e.target.closest('[data-d]');if(d){if(!confirm('মুছে ফেলবেন?'))return;try{await call({action:d.dataset.d,id:d.dataset.id});await load()}catch(x){msg(x.message)}return}
+ const s=e.target.closest('.sv');if(s){const tr=s.closest('tr');s.disabled=true;
+  try{await call({action:'updateApp',id:tr.dataset.id,status:tr.querySelector('.s').value,bill:tr.querySelector('.b').value,paid:tr.querySelector('.p').value,note:tr.querySelector('.nt').value});await load()}catch(x){msg(x.message)}s.disabled=false}});
+
+// ---- ফর্ম বাইন্ড ----
+const entryHTML=(p,t)=>`<div class="sum" id="s${p}"></div><button class="g tg" data-f="f${p}" data-o="+ নতুন ${t} যোগ করুন">+ নতুন ${t} যোগ করুন</button>
+<form id="f${p}" class="fm" hidden><input type="hidden" name="type" value="${t}"><label>তারিখ<input type="date" name="date" required></label><label>বিবরণ<input name="desc" required maxlength="200"></label><label>টাকা<input type="number" name="amount" min="1" required></label><button class="g">সংরক্ষণ</button></form><div id="l${p}"></div>`;
+$('#v-income').innerHTML=entryHTML('i','আয়');$('#v-expense').innerHTML=entryHTML('x','ব্যয়');
+function defaults(){$$('input[type=date]').forEach(i=>{if(!i.value&&i.id!=='rd'||i.id==='rd'&&!i.value)i.value=today()});$$('input[type=month]').forEach(i=>{if(!i.value)i.value=today().slice(0,7)})}
+function bind(id,action,fields){$('#'+id).onsubmit=async e=>{e.preventDefault();const f=e.target,d={action};fields.forEach(k=>d[k]=f.elements[k].value);
+ try{await call(d);f.reset();defaults();closeForm(f);await load()}catch(x){msg(x.message)}}}
+bind('fi','addEntry',['type','date','desc','amount']);bind('fx','addEntry',['type','date','desc','amount']);
+bind('fc','addCash',['date','type','place','amount','note']);bind('fs2','addStaff',['name','title','phone','address','joined','salary']);
+bind('fp','addSalary',['staffId','month','amount','date','note']);bind('fa','addAdmin',['name','title','phone','email','address','password']);
+$('#fc [name=place]').innerHTML=PL.map(p=>`<option>${p}</option>`).join('');
+$('#fp [name=staffId]').onchange=e=>{const s=D.staff.find(x=>x.id===e.target.value);if(s&&N(s.salary))$('#fp [name=amount]').value=N(s.salary)};
+$('#fs').innerHTML+=ST.map(s=>`<option>${s}</option>`).join('');$('#q').oninput=$('#fs').onchange=renderApps;
+
+// ---- লোগো ----
+$('#lf2').onchange=e=>{const f=e.target.files[0];if(!f)return;const im=new Image();im.onload=()=>{const k=Math.min(1,200/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+ const u=c.toDataURL('image/png');if(u.length>45000){msg('লোগো অনেক বড়, ছোট ছবি দিন');return}logo=u;$('#lpv').src=u;$('#lpv').hidden=false};im.src=URL.createObjectURL(f)};
+$('#lrm').onclick=()=>{logo='';$('#lpv').hidden=true;$('#lf2').value=''};
+$('#fset').onsubmit=async e=>{e.preventDefault();const f=e.target,d={action:'saveSettings'};['siteName','phone','email','address','hours','facebook','instagram','youtube'].forEach(k=>d[k]=f.elements[k].value.trim());if(logo!==undefined)d.logo=logo;
+ try{await call(d);logo=undefined;closeForm(f);await load()}catch(x){msg(x.message)}};
+
+// ---- রেন্ডার ----
+async function load(){msg('');try{D={...D,...await call({action:'data'})};render()}catch(x){msg(x.message)}}
+function renderApps(){const q=$('#q').value.trim().toLowerCase(),f=$('#fs').value;
+ $('#tb').innerHTML=D.apps.filter(a=>(!f||a.status===f)&&(!q||[a.id,a.name,a.phone].join(' ').toLowerCase().includes(q))).map(a=>`<tr data-id="${esc(a.id)}"><td>${esc(a.id)}<br><small>${esc(a.date)}</small></td><td>${esc(a.service)}</td>
+ <td>${esc(a.name)}<br><a href="tel:${esc(a.phone)}">${esc(a.phone)}</a></td><td style="max-width:220px">${esc(a.details)}</td><td><select class="s" style="width:auto">${ST.map(s=>`<option${s===a.status?' selected':''}>${s}</option>`).join('')}</select></td>
+ <td><input class="b" type="number" min="0" value="${N(a.bill)}"></td><td><input class="p" type="number" min="0" value="${N(a.paid)}"></td><td>${mny(N(a.bill)-N(a.paid))}</td><td><input class="nt" value="${esc(a.note)}" maxlength="300"></td><td><button class="sv">সংরক্ষণ</button></td></tr>`).join('')||'<tr><td colspan="10">কোনো আবেদন নেই</td></tr>'}
+function render(){renderApps();
+ [['i','আয়'],['x','ব্যয়']].forEach(([p,t])=>{const L=D.acc.filter(x=>x.type===t);$('#s'+p).innerHTML=cards([['মোট '+t,mny(sum(L,'amount'))],['এন্ট্রি',L.length.toLocaleString('bn-BD')]]);
+  $('#l'+p).innerHTML=tbl(['তারিখ','বিবরণ','টাকা',''],L.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.desc)}</td><td>${mny(x.amount)}</td><td>${del('delEntry',x.id)}</td></tr>`).join(''))});
+ const td=today(),sg=x=>x.type==='জমা'?N(x.amount):-N(x.amount),inc=sum(D.acc.filter(x=>x.type==='আয়'&&x.date===td),'amount'),dep=D.cash.filter(x=>x.date===td).reduce((t,x)=>t+sg(x),0);
+ const bal=PL.map(p=>[p,D.cash.filter(x=>x.place===p).reduce((t,x)=>t+sg(x),0)]);
+ $('#sc').innerHTML=cards([['আজকের আয়',mny(inc)],['আজ সংরক্ষিত (নিট)',mny(dep)],['আজ সংরক্ষণ বাকি',mny(inc-dep)],...bal.map(([p,v])=>[p,mny(v)]),['মোট সংরক্ষিত',mny(bal.reduce((t,x)=>t+x[1],0))]]);
+ $('#lc').innerHTML=tbl(['তারিখ','ধরন','কোথায়','টাকা','নোট',''],D.cash.map(x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.type)}</td><td>${esc(x.place)}</td><td>${mny(x.amount)}</td><td>${esc(x.note)}</td><td>${del('delCash',x.id)}</td></tr>`).join(''),600);
+ const sel=$('#fp [name=staffId]'),cur=sel.value;sel.innerHTML='<option value="">বেছে নিন</option>'+D.staff.map(s=>`<option value="${esc(s.id)}">${esc(s.name)}</option>`).join('');sel.value=cur;
+ $('#ls').innerHTML=tbl(['নাম','পদবি','মোবাইল','ঠিকানা','যোগদান','মূল বেতন',''],D.staff.map(s=>`<tr><td>${esc(s.name)}</td><td>${esc(s.title)}</td><td>${esc(s.phone)}</td><td>${esc(s.address)}</td><td>${esc(s.joined)}</td><td>${mny(s.salary)}</td><td>${del('delStaff',s.id)}</td></tr>`).join(''),700);
+ $('#lp').innerHTML=tbl(['তারিখ','স্টাফ','মাস','টাকা','নোট',''],D.salaries.map(s=>`<tr><td>${esc(s.date)}</td><td>${esc(s.staffName)}</td><td>${esc(s.month)}</td><td>${mny(s.amount)}</td><td>${esc(s.note)}</td><td>${del('delSalary',s.id)}</td></tr>`).join(''),600);
+ $('#la').innerHTML=tbl(['নাম','পদবি','মোবাইল','ইমেইল','ঠিকানা',''],D.admins.map(a=>`<tr><td>${esc(a.name)}</td><td>${esc(a.title)}</td><td>${esc(a.phone)}</td><td>${esc(a.email)}</td><td>${esc(a.address)}</td><td>${a.id===D.me.id?'আপনি':del('delAdmin',a.id)}</td></tr>`).join(''),650);
+ const S=D.settings||{},f=$('#fset');['siteName','phone','email','address','hours','facebook','instagram','youtube'].forEach(k=>{if(f.hidden)f.elements[k].value=S[k]||''});
+ if(f.hidden&&logo===undefined){$('#lpv').src=S.logo||'';$('#lpv').hidden=!S.logo}
+ $('#sv').innerHTML=tbl(['বিষয়','তথ্য'],[['নাম',S.siteName],['মোবাইল',S.phone],['ইমেইল',S.email],['ঠিকানা',S.address],['অফিস সময়',S.hours],['Facebook',S.facebook],['Instagram',S.instagram],['YouTube',S.youtube]].map(([k,v])=>`<tr><td>${k}</td><td>${esc(v)||'—'}</td></tr>`).join(''),400);
+ defaults();report()}
+
+// ---- রিপোর্ট ----
+function report(){const t=$('#rt').value;$('#rd').hidden=t!=='d';$('#rm').hidden=t!=='m';$('#ry').hidden=t!=='y';
+ const key=t==='d'?$('#rd').value:t==='m'?$('#rm').value:t==='y'?$('#ry').value:'',ok=x=>!key||String(x.date).startsWith(key);
+ const I=D.acc.filter(x=>x.type==='আয়'&&ok(x)),X=[...D.acc.filter(x=>x.type==='ব্যয়'&&ok(x)),...D.salaries.filter(ok).map(s=>({date:s.date,desc:'বেতন/ভাতা: '+s.staffName+(s.month?' ('+s.month+')':''),amount:s.amount}))].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+ const a=sum(I,'amount'),b=sum(X,'amount'),p=a-b,row=x=>`<tr><td>${esc(x.date)}</td><td>${esc(x.desc)}</td><td>${mny(x.amount)}</td></tr>`;
+ $('#ro').innerHTML=`<div class="sum">${cards([['মোট আয়',mny(a)],['মোট ব্যয়',mny(b)],[p>=0?'লাভ':'ক্ষতি',mny(Math.abs(p))]])}</div><h3>আয়ের তালিকা</h3>${tbl(['তারিখ','বিবরণ','টাকা'],I.map(row).join(''),400)}<h3>ব্যয়ের তালিকা (বেতন সহ)</h3>${tbl(['তারিখ','বিবরণ','টাকা'],X.map(row).join(''),400)}`}
+$('#ry').value=new Date().getFullYear();$('#rt').onchange=$('#rd').onchange=$('#rm').onchange=$('#ry').oninput=report;$('#pr').onclick=()=>window.print();
+async function start(){$('#lg').hidden=true;$('#ap').hidden=false;view('apps');defaults();await load()}
 if(T)start();
 </script>
 </body>
