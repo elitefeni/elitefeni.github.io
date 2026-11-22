@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>হজ্জ, ওমরাহ, পাসপোর্ট ও ভিসা সেবা</title>
+<meta name="description" content="হজ্জ ও ওমরাহ প্রসেসিং, পাসপোর্ট, ভিসা, টিকেট এবং ল্যান্ড ও হাউজ প্রপার্টিজ সেবা এক অফিসে।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Noto+Serif+Bengali:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--pine:#0f3d36;--ink:#16241f;--bg:#f5f8f6;--gold:#b8862b;--line:#d3dfda;--mut:#52635d}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:17px/1.7 'Hind Siliguri',sans-serif;color:var(--ink);background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{background:var(--pine);color:#fff}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;gap:12px;flex-wrap:wrap}
+.brand{font:800 20px 'Noto Serif Bengali',serif;text-decoration:none}
+nav a{margin-left:18px;text-decoration:none;opacity:.9}
+.hero{background:var(--pine);color:#fff;padding:48px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+h1{font:800 clamp(30px,5vw,50px)/1.25 'Noto Serif Bengali',serif;margin:0 0 16px}
+.hero p{max-width:46ch;color:#d4e4de;margin:0 0 24px}
+.btn{display:inline-block;background:var(--gold);color:#1b1405;border:0;padding:12px 24px;border-radius:6px;font:600 17px 'Hind Siliguri',sans-serif;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}
+.track{background:#fff;color:var(--ink);border-radius:10px;padding:24px;border-top:6px solid var(--gold)}
+.track h2{font:800 20px 'Noto Serif Bengali',serif;margin:0 0 4px}
+.track p{color:var(--mut);margin:0 0 14px;font-size:15px}
+label{display:block;font-weight:500;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:11px 12px;border:1px solid #b9c9c3;border-radius:6px;font:inherit;background:#fff}
+.res{margin-top:14px;padding:12px;border-radius:6px;background:#eef5f2;display:none}
+.res.err{background:#fbe9e7;color:#8a1f11}
+section{padding:64px 0}
+h2.t{font:800 clamp(24px,3.5vw,32px)/1.3 'Noto Serif Bengali',serif;margin:0 0 28px;color:var(--pine)}
+.svc{display:grid;grid-template-columns:200px 1fr auto;gap:20px;align-items:center;padding:20px 0;border-top:1px solid var(--line)}
+.svc:last-child{border-bottom:1px solid var(--line)}
+.svc h3{margin:0;font:800 19px 'Noto Serif Bengali',serif;color:var(--pine)}
+.svc p{margin:0;color:var(--mut)}
+.svc a{font-weight:600;color:var(--pine);text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
+.apply{background:#e7efeb}
+.form{max-width:620px}
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.contact b{display:block;color:var(--pine)}
+footer{background:var(--pine);color:#c9dbd4;padding:22px 0;font-size:15px}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.svc{grid-template-columns:1fr;gap:6px}.contact{grid-template-columns:1fr}nav{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="brand" href="#" id="bn">আপনার অফিসের নাম</a>
+<nav><a href="#sheba">সেবাসমূহ</a><a href="#abedon">আবেদন</a><a href="#jogajog">যোগাযোগ</a></nav></div></header>
+
+<div class="hero"><div class="wrap">
+<div>
+<h1>সফরের কাগজপত্র আমরা সামলাই, আপনি শুধু প্রস্তুতি নিন</h1>
+<p>হজ্জ ও ওমরাহ, পাসপোর্ট, ভিসা, টিকেট এবং জমি-বাড়ির কাজ একই অফিস থেকে। অনলাইনে আবেদন করুন, আমরা ফোনে যোগাযোগ করব।</p>
+<a class="btn" href="#abedon">আবেদন করুন</a>
+</div>
+<div class="track">
+<h2>আবেদনের অবস্থা দেখুন</h2>
+<p>আবেদনের পর পাওয়া আইডি ও মোবাইল নম্বর দিন।</p>
+<form id="tf"><label for="tid">আবেদন আইডি</label><input id="tid" placeholder="যেমন A261122-5" required>
+<label for="tph">মোবাইল নম্বর</label><input id="tph" inputmode="tel" required>
+<div style="margin-top:14px"><button class="btn" type="submit">অবস্থা দেখুন</button></div></form>
+<div class="res" id="tr" role="status"></div>
+</div></div></div>
+
+<section id="sheba"><div class="wrap"><h2 class="t">আমাদের সেবা</h2>
+<div class="svc"><h3>হজ্জ ও ওমরাহ</h3><p>নিবন্ধন, ভিসা, আবাসন ও ফ্লাইটসহ পূর্ণ প্রসেসিং এবং যাত্রার আগের নির্দেশনা।</p><a href="#abedon" data-s="হজ্জ প্রসেসিং">আবেদন</a></div>
+<div class="svc"><h3>পাসপোর্ট</h3><p>নতুন পাসপোর্ট, রিনিউ ও তথ্য সংশোধনের আবেদন, ফর্ম পূরণ ও ফি জমা।</p><a href="#abedon" data-s="পাসপোর্ট (নতুন/রিনিউ)">আবেদন</a></div>
+<div class="svc"><h3>ভিসা</h3><p>ভ্রমণ, কর্ম ও অন্যান্য ভিসার কাগজপত্র যাচাই ও আবেদন।</p><a href="#abedon" data-s="ভিসা প্রসেসিং">আবেদন</a></div>
+<div class="svc"><h3>টিকেট</h3><p>দেশি ও আন্তর্জাতিক ফ্লাইটের টিকেট বুকিং, পরিবর্তন ও বাতিল।</p><a href="#abedon" data-s="টিকেট প্রসেসিং">আবেদন</a></div>
+<div class="svc"><h3>ল্যান্ড ও হাউজ প্রপার্টিজ</h3><p>জমি ও বাড়ি কেনাবেচা, কাগজ যাচাই ও দলিল-সংক্রান্ত সহযোগিতা।</p><a href="#abedon" data-s="ল্যান্ড ও হাউজ প্রপার্টিজ">আবেদন</a></div>
+</div></section>
+
+<section id="abedon" class="apply"><div class="wrap"><h2 class="t">অনলাইনে আবেদন</h2>
+<form class="form" id="af">
+<label for="s">সেবা</label><select id="s" required><option value="">বেছে নিন</option>
+<option>হজ্জ প্রসেসিং</option><option>ওমরাহ প্রসেসিং</option><option>পাসপোর্ট (নতুন/রিনিউ)</option><option>ভিসা প্রসেসিং</option><option>টিকেট প্রসেসিং</option><option>ল্যান্ড ও হাউজ প্রপার্টিজ</option></select>
+<label for="n">আপনার নাম</label><input id="n" required maxlength="100">
+<label for="p">মোবাইল নম্বর</label><input id="p" inputmode="tel" required maxlength="20" placeholder="01XXXXXXXXX">
+<label for="d">কী প্রয়োজন, সংক্ষেপে লিখুন</label><textarea id="d" rows="4" maxlength="800"></textarea>
+<div style="margin-top:16px"><button class="btn" type="submit" id="ab">আবেদন পাঠান</button></div>
+</form>
+<div class="res" id="ar" role="status" style="max-width:620px"></div>
+</div></section>
+
+<section id="jogajog"><div class="wrap"><h2 class="t">যোগাযোগ</h2>
+<div class="contact"><div><b>ফোন</b><a id="cp" href="#">01XXXXXXXXX</a></div><div><b>ঠিকানা</b><span id="ca">আপনার ঠিকানা</span></div><div><b>অফিস সময়</b><span id="ch">শনি–বৃহস্পতি, সকাল ৯টা – সন্ধ্যা ৬টা</span></div></div>
+</div></section>
+<footer><div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">© <span id="fn">আপনার অফিসের নাম</span><a href="admin.html" rel="nofollow" style="opacity:.7">অ্যাডমিন লগইন</a></div></footer>
+
+<script>
+// ===== এখানে নিজের তথ্য বসান =====
+const CFG={name:'আপনার অফিসের নাম',phone:'01XXXXXXXXX',address:'আপনার ঠিকানা',hours:'শনি–বৃহস্পতি, সকাল ৯টা – সন্ধ্যা ৬টা',api:'https://script.google.com/macros/s/AKfycbzEzpIXppMRvTq4_zq553jeTH_xszrzz5grkJLes-tx7hIEf_xGkYoABmzjIBAlEVyDXQ/exec'};
+// ==================================
+const $=s=>document.querySelector(s);
+$('#bn').textContent=$('#fn').textContent=CFG.name;$('#cp').textContent=CFG.phone;$('#cp').href='tel:'+CFG.phone;$('#ca').textContent=CFG.address;$('#ch').textContent=CFG.hours;
+document.title=CFG.name+' | হজ্জ, ওমরাহ, পাসপোর্ট ও ভিসা সেবা';
+document.querySelectorAll('[data-s]').forEach(a=>a.onclick=()=>{$('#s').value=a.dataset.s});
+async function call(d){const r=await fetch(CFG.api,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});return r.json()}
+function show(el,msg,err){el.textContent=msg;el.className='res'+(err?' err':'');el.style.display='block'}
+$('#af').onsubmit=async e=>{e.preventDefault();const b=$('#ab');b.disabled=true;b.textContent='পাঠানো হচ্ছে…';
+ try{const j=await call({action:'apply',service:$('#s').value,name:$('#n').value,phone:$('#p').value,details:$('#d').value});
+ if(j.ok){show($('#ar'),'আবেদন জমা হয়েছে। আপনার আইডি: '+j.id+' (সংরক্ষণ করুন)। আমরা শীঘ্রই ফোন করব।');e.target.reset()}else show($('#ar'),j.error,1)}
+ catch(x){show($('#ar'),'পাঠানো যায়নি। ইন্টারনেট দেখে আবার চেষ্টা করুন বা ফোন করুন।',1)}
+ b.disabled=false;b.textContent='আবেদন পাঠান'};
+$('#tf').onsubmit=async e=>{e.preventDefault();
+ try{const j=await call({action:'track',id:$('#tid').value,phone:$('#tph').value});
+ j.ok?show($('#tr'),j.service+' — অবস্থা: '+j.status+' (আবেদনের তারিখ '+j.date+')'):show($('#tr'),j.error,1)}
+ catch(x){show($('#tr'),'এখন দেখা যাচ্ছে না, পরে চেষ্টা করুন।',1)}};
+</script>
+</body>
+</html>
