@@ -67,6 +67,9 @@ nav a:hover{background:#ffffff22}nav a span{display:none;font-size:15px}
 .hb{display:flex;gap:12px;flex-wrap:wrap}
 .btn.st{background:#fff;color:var(--pine)}
 .track{max-width:430px;margin-top:22px}
+body.pm .hero,body.pm>section,body.pm>footer{display:none}
+#pg{padding:20px 0 48px;min-height:70vh}.pgb{display:flex;justify-content:space-between;gap:10px;margin-bottom:12px;border-bottom:1px solid var(--line);padding-bottom:8px}.pa{text-align:right;margin-top:22px}
+.svc a{justify-self:end}
 #jogajog{background:#f4ead5}#jogajog a{color:#6b4a0f}
 @media(max-width:760px){section{padding:34px 0}h2.t{margin-bottom:10px}.hero{padding:26px 0 34px}.svc{padding:14px 0}.svc:first-of-type{padding-top:6px}}
 </style>
@@ -107,7 +110,7 @@ nav a:hover{background:#ffffff22}nav a span{display:none;font-size:15px}
 <div class="contact"><div id="wp" hidden><b>ফোন</b><a id="cp" href="#"></a></div><div id="we" hidden><b>ইমেইল</b><a id="ce" href="#"></a></div><div id="wa" hidden><b>ঠিকানা</b><span id="ca"></span></div><div id="wh" hidden><b>অফিস সময়</b><span id="ch"></span></div><div id="ws" hidden><b>আমাদের অনুসরণ করুন</b><span id="cs"></span></div></div>
 </div></section>
 <footer><div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>© <span id="fn">আমাদের অফিস</span> · <a href="admin.html" rel="nofollow" style="opacity:.8">অ্যাডমিন লগইন</a></span><span>©copyright: AM Shahed: 01605721296</span></div></footer>
-<dialog id="dt" aria-label="সেবার বিস্তারিত"><div class="dh"><button type="button" id="db" class="lk" hidden>← পেছনে</button><button type="button" id="dx" class="lk" style="margin-left:auto">বন্ধ করুন ✕</button></div><div id="dc"></div></dialog>
+<div id="pg" hidden><div class="wrap"><div class="pgb"><button type="button" id="db" class="lk" hidden>← পেছনে</button><button type="button" id="dx" class="lk" style="margin-left:auto">বন্ধ করুন ✕</button></div><div id="dc"></div></div></div>
 
 <script>
 const CFG={api:'https://script.google.com/macros/s/AKfycbzEzpIXppMRvTq4_zq553jeTH_xszrzz5grkJLes-tx7hIEf_xGkYoABmzjIBAlEVyDXQ/exec'};
@@ -115,7 +118,7 @@ const $=s=>document.querySelector(s);
 function fill(s){if(!s)return;
  if(s.siteName){$('#bn').textContent=$('#fn').textContent=s.siteName;document.title=s.siteName+' | হজ্জ, ওমরাহ, পাসপোর্ট ও ভিসা সেবা'}
  if(s.logo&&/^data:image\//.test(s.logo)){$('#lg').src=s.logo;$('#lg').hidden=false}
- const h=document.querySelector('.hero');if(s.hero&&/^data:image\//.test(s.hero)){h.style.backgroundImage='linear-gradient(rgba(10,45,40,.78),rgba(10,45,40,.78)),url("'+s.hero+'")'}else h.style.backgroundImage=''
+ const h=document.querySelector('.hero');if(s.hero&&/^data:image\//.test(s.hero)){h.style.backgroundImage='linear-gradient(rgba(10,45,40,.78),rgba(10,45,40,.78)),url("'+s.hero+'")'}else h.style.backgroundImage='';
  [['wp','cp',s.phone,v=>{$('#cp').href='tel:'+v}],['we','ce',s.email,v=>{$('#ce').href='mailto:'+v}],['wa','ca',s.address],['wh','ch',s.hours]].forEach(([w,t,v,f])=>{$('#'+w).hidden=!v;if(v){$('#'+t).textContent=v;f&&f(v)}});
  const so=$('#cs');so.innerHTML='';[['Facebook',s.facebook],['Instagram',s.instagram],['YouTube',s.youtube]].forEach(([n,u])=>{if(u&&/^https?:\/\//.test(u)){const a=document.createElement('a');a.href=u;a.textContent=n;a.target='_blank';a.rel='noopener';a.style.marginRight='14px';so.appendChild(a)}});
  $('#ws').hidden=!so.children.length}
@@ -125,18 +128,24 @@ function cat(a){CAT=a||[];$('#sl').innerHTML=CAT.length?CAT.map(v=>`<div class="
  const sel=$('#s'),cv=sel.value;sel.innerHTML='<option value="">বেছে নিন</option>'+CAT.map(v=>`<option>${esc(v.name)}</option>`).join('');sel.value=cv}
 try{fill(JSON.parse(localStorage.getItem('site')));cat(JSON.parse(localStorage.getItem('cat')))}catch(x){}
 call({action:'public'}).then(j=>{if(j.ok){fill(j.settings);cat(j.services);try{localStorage.setItem('site',JSON.stringify(j.settings));localStorage.setItem('cat',JSON.stringify(j.services))}catch(x){}}else $('#sl').innerHTML='<p>তালিকা লোড করা যায়নি।</p>'}).catch(()=>{if(!CAT.length)$('#sl').innerHTML='<p>তালিকা লোড করা যায়নি, পরে চেষ্টা করুন।</p>'});
-const dt=$('#dt');let back=null;
-function dlg(h,b){$('#dc').innerHTML=h;back=b;$('#db').hidden=!b;if(!dt.open)dt.showModal();dt.scrollTop=0}
+let back=null,pushed=false,after=null,sy=0;
+function dlg(h,b){$('#dc').innerHTML=h;back=b;$('#db').hidden=!b;
+ if(!document.body.classList.contains('pm')){sy=window.scrollY;document.body.classList.add('pm');$('#pg').hidden=false;if(!pushed){history.pushState({pg:1},'');pushed=true}}
+ window.scrollTo(0,0)}
+function closePage(){if(!document.body.classList.contains('pm'))return;document.body.classList.remove('pm');$('#pg').hidden=true;window.scrollTo(0,sy)}
+function leave(cb){closePage();if(pushed){after=cb;history.back()}else if(cb)cb()}
+window.addEventListener('popstate',()=>{pushed=false;closePage();if(after){const f=after;after=null;f()}});
+document.querySelector('header nav').addEventListener('click',e=>{if(!document.body.classList.contains('pm'))return;const a=e.target.closest('a');if(!a)return;e.preventDefault();e.stopPropagation();leave(()=>a.click())},true);
 function showSvc(id){const v=CAT.find(x=>x.id===id);if(!v)return;
- dlg(`<h2 class="t">${esc(v.name)}</h2>`+(v.packages.length?`<p>বর্তমানে চালু আছে:</p><ul class="pl">${v.packages.map(p=>`<li><a href="#" data-p="${esc(p.id)}" data-sv="${esc(v.id)}">${esc(p.title)}</a></li>`).join('')}</ul>`:'<p>বর্তমানে কোনো প্যাকেজ চালু নেই। বিস্তারিত জানতে যোগাযোগ করুন।</p>')+`<button type="button" class="btn" data-c="${esc(v.id)}">যোগাযোগ করুন</button>`,null)}
+ dlg(`<h2 class="t">${esc(v.name)}</h2>`+(v.packages.length?`<p>বর্তমানে চালু আছে:</p><ul class="pl">${v.packages.map(p=>`<li><a href="#" data-p="${esc(p.id)}" data-sv="${esc(v.id)}">${esc(p.title)}</a></li>`).join('')}</ul>`:'<p>বর্তমানে কোনো প্যাকেজ চালু নেই। বিস্তারিত জানতে যোগাযোগ করুন।</p>')+`<div class="pa"><button type="button" class="btn" data-c="${esc(v.id)}">যোগাযোগ করুন</button></div>`,null)}
 function showPkg(sid,pid){const v=CAT.find(x=>x.id===sid),p=v&&v.packages.find(x=>x.id===pid);if(!p)return;
  const ks=[...v.fields,...Object.keys(p.data).filter(k=>!v.fields.includes(k))].filter(k=>p.data[k]);
- dlg(`<h2 class="t">${esc(p.title)}</h2><dl>${ks.map(k=>`<dt>${esc(k)}</dt><dd>${esc(p.data[k])}</dd>`).join('')}</dl><button type="button" class="btn" data-c="${esc(sid)}" data-t="${esc(p.title)}">যোগাযোগ করুন</button>`,()=>showSvc(sid))}
+ dlg(`<h2 class="t">${esc(p.title)}</h2><dl>${ks.map(k=>`<dt>${esc(k)}</dt><dd>${esc(p.data[k])}</dd>`).join('')}</dl><div class="pa"><button type="button" class="btn" data-c="${esc(sid)}" data-t="${esc(p.title)}">যোগাযোগ করুন</button></div>`,()=>showSvc(sid))}
 document.addEventListener('click',e=>{let a;
  if(a=e.target.closest('[data-v]')){e.preventDefault();return showSvc(a.dataset.v)}
  if(a=e.target.closest('[data-p]')){e.preventDefault();return showPkg(a.dataset.sv,a.dataset.p)}
- if(a=e.target.closest('[data-c]')){const v=CAT.find(x=>x.id===a.dataset.c);dt.close();openApply(v?v.name:'');if(a.dataset.t)$('#d').value='প্যাকেজ: '+a.dataset.t}});
-$('#dx').onclick=()=>dt.close();$('#db').onclick=()=>back&&back();dt.addEventListener('click',e=>{if(e.target===dt)dt.close()});
+ if(a=e.target.closest('[data-c]')){const v=CAT.find(x=>x.id===a.dataset.c);leave(()=>{openApply(v?v.name:'');if(a.dataset.t)$('#d').value='প্যাকেজ: '+a.dataset.t})}});
+$('#dx').onclick=()=>leave();$('#db').onclick=()=>back&&back();
 async function call(d){const r=await fetch(CFG.api,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});return r.json()}
 function show(el,msg,err){el.textContent=msg;el.className='res'+(err?' err':'');el.style.display='block'}
 $('#af').onsubmit=async e=>{e.preventDefault();const b=$('#ab');b.disabled=true;b.textContent='পাঠানো হচ্ছে…';
@@ -149,9 +158,9 @@ $('#tf').onsubmit=async e=>{e.preventDefault();
  j.ok?show($('#tr'),j.service+' — অবস্থা: '+j.status+' (আবেদনের তারিখ '+j.date+')'):show($('#tr'),j.error,1)}
  catch(x){show($('#tr'),'এখন দেখা যাচ্ছে না, পরে চেষ্টা করুন।',1)}};
 function openApply(v){const a=$('#abedon');a.hidden=false;if(v)$('#s').value=v;a.scrollIntoView({behavior:'smooth'})}
-document.querySelectorAll('[data-open],[data-s]').forEach(a=>a.onclick=e=>{e.preventDefault();openApply(a.dataset.s)});
+document.querySelectorAll('[data-open],[data-s]').forEach(a=>a.onclick=e=>{e.preventDefault();if(a.closest('nav')&&!$('#abedon').hidden){$('#abedon').hidden=true;return}openApply(a.dataset.s)});
 function track(o){const p=$('#tp'),v=o===undefined?p.hidden:o;p.hidden=!v;$('#tk').setAttribute('aria-expanded',v);if(v)p.scrollIntoView({behavior:'smooth',block:'center'})}
-$('#tk').onclick=()=>track();document.querySelector('[data-track]').onclick=e=>{e.preventDefault();track(true)};
+$('#tk').onclick=()=>track();document.querySelector('[data-track]').onclick=e=>{e.preventDefault();track()};
 $('#ac').onclick=()=>{$('#abedon').hidden=true;window.scrollTo({top:0,behavior:'smooth'})};
 $('#tf').onreset=()=>{$('#tr').style.display='none'};
 </script>
