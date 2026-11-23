@@ -44,40 +44,57 @@ h2.t{font:800 clamp(24px,3.5vw,32px)/1.3 'Noto Serif Bengali',serif;margin:0 0 2
 .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
 .contact b{display:block;color:var(--pine)}
 footer{background:var(--pine);color:#c9dbd4;padding:22px 0;font-size:15px}
-@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.svc{grid-template-columns:1fr;gap:6px}.contact{grid-template-columns:1fr}nav{display:none}}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr}.svc{grid-template-columns:1fr;gap:6px}.contact{grid-template-columns:1fr}}
+dialog{border:0;border-radius:10px;padding:0;max-width:640px;width:calc(100% - 24px);max-height:88vh;overflow:auto;color:var(--ink)}
+dialog::backdrop{background:#0008}
+.dh{display:flex;padding:10px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff}
+#dc{padding:16px 20px 24px}
+.lk{background:none;border:0;color:var(--pine);font:600 16px 'Hind Siliguri',sans-serif;cursor:pointer;padding:4px 0}
+.pl{padding:0;list-style:none;margin:0 0 18px}.pl li{border-top:1px solid var(--line)}.pl a{display:block;padding:12px 4px;font-weight:600;color:var(--pine)}
+dl{margin:0 0 18px}dt{font-weight:600;color:var(--pine);margin-top:10px}dd{margin:0;white-space:pre-wrap}
+html{scroll-padding-top:64px}
+header{position:sticky;top:0;z-index:30}
+header .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:nowrap;gap:10px;padding:9px 16px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;font-size:clamp(16px,4.6vw,21px)}
+.brand span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#lg{height:38px;width:auto;border-radius:4px;flex:none}
+nav{display:flex;gap:2px;flex:none}
+nav a{margin:0;display:flex;align-items:center;gap:6px;padding:8px 9px;border-radius:6px;opacity:1}
+nav a:hover{background:#ffffff22}nav a span{display:none;font-size:15px}
+@media(min-width:900px){nav a span{display:inline}}
+.hero{background:var(--pine) center/cover no-repeat}
+.hero .wrap{grid-template-columns:1fr}
+.hb{display:flex;gap:12px;flex-wrap:wrap}
+.btn.st{background:#fff;color:var(--pine)}
+.track{max-width:430px;margin-top:22px}
+#jogajog{background:#f4ead5}#jogajog a{color:#6b4a0f}
+@media(max-width:760px){section{padding:34px 0}h2.t{margin-bottom:10px}.hero{padding:26px 0 34px}.svc{padding:14px 0}.svc:first-of-type{padding-top:6px}}
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="brand" href="#" style="display:flex;align-items:center;gap:10px"><img id="lg" alt="" hidden style="height:38px;width:auto;border-radius:4px"><span id="bn">আমাদের অফিস</span></a>
-<nav><a href="#sheba">সেবাসমূহ</a><a href="#abedon" data-open>আবেদন</a><a href="#jogajog">যোগাযোগ</a></nav></div></header>
+<header><div class="wrap"><a class="brand" href="#"><img id="lg" alt="" hidden><span id="bn">আমাদের অফিস</span></a>
+<nav aria-label="মেনু"><a href="#sheba" title="সেবাসমূহ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>সেবাসমূহ</span></a><a href="#abedon" data-open title="আবেদন"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M9 14h6M9 18h6"/></svg><span>আবেদন</span></a><a href="#" data-track title="আবেদনের অবস্থা"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>অবস্থা</span></a><a href="#jogajog" title="যোগাযোগ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg><span>যোগাযোগ</span></a></nav></div></header>
 
 <div class="hero"><div class="wrap">
 <div>
 <h1>সফরের কাগজপত্র আমরা সামলাই, আপনি শুধু প্রস্তুতি নিন</h1>
 <p>হজ্জ ও ওমরাহ, পাসপোর্ট, ভিসা, টিকেট এবং জমি-বাড়ির কাজ একই অফিস থেকে। অনলাইনে আবেদন করুন, আমরা ফোনে যোগাযোগ করব।</p>
-<a class="btn" href="#abedon" data-open>আবেদন করুন</a>
+<div class="hb"><a class="btn" href="#abedon" data-open>আবেদন করুন</a><button type="button" class="btn st" id="tk" aria-expanded="false" aria-controls="tp">আবেদনের অবস্থা দেখুন</button></div>
 </div>
-<div class="track">
+<div class="track" id="tp" hidden>
 <h2>আবেদনের অবস্থা দেখুন</h2>
 <p>আবেদনের পর পাওয়া আইডি ও মোবাইল নম্বর দিন।</p>
 <form id="tf"><label for="tid">আবেদন আইডি</label><input id="tid" placeholder="যেমন A261122-5" required>
 <label for="tph">মোবাইল নম্বর</label><input id="tph" inputmode="tel" required>
-<div style="margin-top:14px;display:flex;gap:10px"><button class="btn" type="submit">অবস্থা দেখুন</button><button class="btn" type="reset" style="background:#e1e9e5">রিসেট</button></div></form>
+<div style="margin-top:14px;display:flex;gap:10px"><button class="btn" type="submit">অবস্থা দেখুন</button><button class="btn" type="reset" style="background:#a33a2b;color:#fff">রিসেট</button></div></form>
 <div class="res" id="tr" role="status"></div>
 </div></div></div>
 
-<section id="sheba"><div class="wrap"><h2 class="t">আমাদের সেবা</h2>
-<div class="svc"><h3>হজ্জ ও ওমরাহ</h3><p>নিবন্ধন, ভিসা, আবাসন ও ফ্লাইটসহ পূর্ণ প্রসেসিং এবং যাত্রার আগের নির্দেশনা।</p><a href="#abedon" data-s="হজ্জ প্রসেসিং">আবেদন</a></div>
-<div class="svc"><h3>পাসপোর্ট</h3><p>নতুন পাসপোর্ট, রিনিউ ও তথ্য সংশোধনের আবেদন, ফর্ম পূরণ ও ফি জমা।</p><a href="#abedon" data-s="পাসপোর্ট (নতুন/রিনিউ)">আবেদন</a></div>
-<div class="svc"><h3>ভিসা</h3><p>ভ্রমণ, কর্ম ও অন্যান্য ভিসার কাগজপত্র যাচাই ও আবেদন।</p><a href="#abedon" data-s="ভিসা প্রসেসিং">আবেদন</a></div>
-<div class="svc"><h3>টিকেট</h3><p>দেশি ও আন্তর্জাতিক ফ্লাইটের টিকেট বুকিং, পরিবর্তন ও বাতিল।</p><a href="#abedon" data-s="টিকেট প্রসেসিং">আবেদন</a></div>
-<div class="svc"><h3>ল্যান্ড ও হাউজ প্রপার্টিজ</h3><p>জমি ও বাড়ি কেনাবেচা, কাগজ যাচাই ও দলিল-সংক্রান্ত সহযোগিতা।</p><a href="#abedon" data-s="ল্যান্ড ও হাউজ প্রপার্টিজ">আবেদন</a></div>
-</div></section>
+<section id="sheba"><div class="wrap"><h2 class="t">আমাদের সেবা</h2><div id="sl"><p>লোড হচ্ছে…</p></div></div></section>
 
 <section id="abedon" class="apply" hidden><div class="wrap"><div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px"><h2 class="t">অনলাইনে আবেদন</h2><button type="button" class="btn" id="ac" style="background:#fff">বন্ধ করুন</button></div>
 <form class="form" id="af">
-<label for="s">সেবা</label><select id="s" required><option value="">বেছে নিন</option>
-<option>হজ্জ প্রসেসিং</option><option>ওমরাহ প্রসেসিং</option><option>পাসপোর্ট (নতুন/রিনিউ)</option><option>ভিসা প্রসেসিং</option><option>টিকেট প্রসেসিং</option><option>ল্যান্ড ও হাউজ প্রপার্টিজ</option></select>
+<label for="s">সেবা</label><select id="s" required><option value="">বেছে নিন</option></select>
 <label for="n">আপনার নাম</label><input id="n" required maxlength="100">
 <label for="p">মোবাইল নম্বর</label><input id="p" inputmode="tel" required maxlength="20" placeholder="01XXXXXXXXX">
 <label for="d">কী প্রয়োজন, সংক্ষেপে লিখুন</label><textarea id="d" rows="4" maxlength="800"></textarea>
@@ -89,7 +106,8 @@ footer{background:var(--pine);color:#c9dbd4;padding:22px 0;font-size:15px}
 <section id="jogajog"><div class="wrap"><h2 class="t">যোগাযোগ</h2>
 <div class="contact"><div id="wp" hidden><b>ফোন</b><a id="cp" href="#"></a></div><div id="we" hidden><b>ইমেইল</b><a id="ce" href="#"></a></div><div id="wa" hidden><b>ঠিকানা</b><span id="ca"></span></div><div id="wh" hidden><b>অফিস সময়</b><span id="ch"></span></div><div id="ws" hidden><b>আমাদের অনুসরণ করুন</b><span id="cs"></span></div></div>
 </div></section>
-<footer><div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">© <span id="fn">আমাদের অফিস</span><a href="admin.html" rel="nofollow" style="opacity:.7">অ্যাডমিন লগইন</a></div></footer>
+<footer><div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>© <span id="fn">আমাদের অফিস</span> · <a href="admin.html" rel="nofollow" style="opacity:.8">অ্যাডমিন লগইন</a></span><span>©copyright: AM Shahed: 01605721296</span></div></footer>
+<dialog id="dt" aria-label="সেবার বিস্তারিত"><div class="dh"><button type="button" id="db" class="lk" hidden>← পেছনে</button><button type="button" id="dx" class="lk" style="margin-left:auto">বন্ধ করুন ✕</button></div><div id="dc"></div></dialog>
 
 <script>
 const CFG={api:'https://script.google.com/macros/s/AKfycbzEzpIXppMRvTq4_zq553jeTH_xszrzz5grkJLes-tx7hIEf_xGkYoABmzjIBAlEVyDXQ/exec'};
@@ -97,11 +115,28 @@ const $=s=>document.querySelector(s);
 function fill(s){if(!s)return;
  if(s.siteName){$('#bn').textContent=$('#fn').textContent=s.siteName;document.title=s.siteName+' | হজ্জ, ওমরাহ, পাসপোর্ট ও ভিসা সেবা'}
  if(s.logo&&/^data:image\//.test(s.logo)){$('#lg').src=s.logo;$('#lg').hidden=false}
+ const h=document.querySelector('.hero');if(s.hero&&/^data:image\//.test(s.hero)){h.style.backgroundImage='linear-gradient(rgba(10,45,40,.78),rgba(10,45,40,.78)),url("'+s.hero+'")'}else h.style.backgroundImage=''
  [['wp','cp',s.phone,v=>{$('#cp').href='tel:'+v}],['we','ce',s.email,v=>{$('#ce').href='mailto:'+v}],['wa','ca',s.address],['wh','ch',s.hours]].forEach(([w,t,v,f])=>{$('#'+w).hidden=!v;if(v){$('#'+t).textContent=v;f&&f(v)}});
  const so=$('#cs');so.innerHTML='';[['Facebook',s.facebook],['Instagram',s.instagram],['YouTube',s.youtube]].forEach(([n,u])=>{if(u&&/^https?:\/\//.test(u)){const a=document.createElement('a');a.href=u;a.textContent=n;a.target='_blank';a.rel='noopener';a.style.marginRight='14px';so.appendChild(a)}});
  $('#ws').hidden=!so.children.length}
-try{fill(JSON.parse(localStorage.getItem('site')))}catch(x){}
-call({action:'settings'}).then(j=>{if(j.ok){fill(j.settings);try{localStorage.setItem('site',JSON.stringify(j.settings))}catch(x){}}}).catch(()=>{});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let CAT=[];
+function cat(a){CAT=a||[];$('#sl').innerHTML=CAT.length?CAT.map(v=>`<div class="svc"><h3>${esc(v.name)}</h3><p>${esc(v.desc)}</p><a href="#" data-v="${esc(v.id)}">বিস্তারিত</a></div>`).join(''):'<p>সেবার তালিকা শীঘ্রই যোগ করা হবে।</p>';
+ const sel=$('#s'),cv=sel.value;sel.innerHTML='<option value="">বেছে নিন</option>'+CAT.map(v=>`<option>${esc(v.name)}</option>`).join('');sel.value=cv}
+try{fill(JSON.parse(localStorage.getItem('site')));cat(JSON.parse(localStorage.getItem('cat')))}catch(x){}
+call({action:'public'}).then(j=>{if(j.ok){fill(j.settings);cat(j.services);try{localStorage.setItem('site',JSON.stringify(j.settings));localStorage.setItem('cat',JSON.stringify(j.services))}catch(x){}}else $('#sl').innerHTML='<p>তালিকা লোড করা যায়নি।</p>'}).catch(()=>{if(!CAT.length)$('#sl').innerHTML='<p>তালিকা লোড করা যায়নি, পরে চেষ্টা করুন।</p>'});
+const dt=$('#dt');let back=null;
+function dlg(h,b){$('#dc').innerHTML=h;back=b;$('#db').hidden=!b;if(!dt.open)dt.showModal();dt.scrollTop=0}
+function showSvc(id){const v=CAT.find(x=>x.id===id);if(!v)return;
+ dlg(`<h2 class="t">${esc(v.name)}</h2>`+(v.packages.length?`<p>বর্তমানে চালু আছে:</p><ul class="pl">${v.packages.map(p=>`<li><a href="#" data-p="${esc(p.id)}" data-sv="${esc(v.id)}">${esc(p.title)}</a></li>`).join('')}</ul>`:'<p>বর্তমানে কোনো প্যাকেজ চালু নেই। বিস্তারিত জানতে যোগাযোগ করুন।</p>')+`<button type="button" class="btn" data-c="${esc(v.id)}">যোগাযোগ করুন</button>`,null)}
+function showPkg(sid,pid){const v=CAT.find(x=>x.id===sid),p=v&&v.packages.find(x=>x.id===pid);if(!p)return;
+ const ks=[...v.fields,...Object.keys(p.data).filter(k=>!v.fields.includes(k))].filter(k=>p.data[k]);
+ dlg(`<h2 class="t">${esc(p.title)}</h2><dl>${ks.map(k=>`<dt>${esc(k)}</dt><dd>${esc(p.data[k])}</dd>`).join('')}</dl><button type="button" class="btn" data-c="${esc(sid)}" data-t="${esc(p.title)}">যোগাযোগ করুন</button>`,()=>showSvc(sid))}
+document.addEventListener('click',e=>{let a;
+ if(a=e.target.closest('[data-v]')){e.preventDefault();return showSvc(a.dataset.v)}
+ if(a=e.target.closest('[data-p]')){e.preventDefault();return showPkg(a.dataset.sv,a.dataset.p)}
+ if(a=e.target.closest('[data-c]')){const v=CAT.find(x=>x.id===a.dataset.c);dt.close();openApply(v?v.name:'');if(a.dataset.t)$('#d').value='প্যাকেজ: '+a.dataset.t}});
+$('#dx').onclick=()=>dt.close();$('#db').onclick=()=>back&&back();dt.addEventListener('click',e=>{if(e.target===dt)dt.close()});
 async function call(d){const r=await fetch(CFG.api,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});return r.json()}
 function show(el,msg,err){el.textContent=msg;el.className='res'+(err?' err':'');el.style.display='block'}
 $('#af').onsubmit=async e=>{e.preventDefault();const b=$('#ab');b.disabled=true;b.textContent='পাঠানো হচ্ছে…';
@@ -115,6 +150,8 @@ $('#tf').onsubmit=async e=>{e.preventDefault();
  catch(x){show($('#tr'),'এখন দেখা যাচ্ছে না, পরে চেষ্টা করুন।',1)}};
 function openApply(v){const a=$('#abedon');a.hidden=false;if(v)$('#s').value=v;a.scrollIntoView({behavior:'smooth'})}
 document.querySelectorAll('[data-open],[data-s]').forEach(a=>a.onclick=e=>{e.preventDefault();openApply(a.dataset.s)});
+function track(o){const p=$('#tp'),v=o===undefined?p.hidden:o;p.hidden=!v;$('#tk').setAttribute('aria-expanded',v);if(v)p.scrollIntoView({behavior:'smooth',block:'center'})}
+$('#tk').onclick=()=>track();document.querySelector('[data-track]').onclick=e=>{e.preventDefault();track(true)};
 $('#ac').onclick=()=>{$('#abedon').hidden=true;window.scrollTo({top:0,behavior:'smooth'})};
 $('#tf').onreset=()=>{$('#tr').style.display='none'};
 </script>
