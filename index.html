@@ -62,7 +62,7 @@ nav{display:flex;gap:2px;flex:none}
 nav a{margin:0;display:flex;align-items:center;gap:6px;padding:8px 9px;border-radius:6px;opacity:1}
 nav a:hover{background:#ffffff22}nav a span{display:none;font-size:15px}
 @media(min-width:900px){nav a span{display:inline}}
-.hero{background:var(--pine) center/cover no-repeat}
+.hero{background:var(--pine) center/cover no-repeat}.hero h1,.hero p{text-shadow:0 2px 8px #000a}.hero p{color:#fff}
 .hero .wrap{grid-template-columns:1fr}
 .hb{display:flex;gap:12px;flex-wrap:wrap}
 .btn.st{background:#fff;color:var(--pine)}
@@ -72,11 +72,14 @@ body.pm .hero,body.pm>section,body.pm>footer{display:none}
 .svc a{justify-self:end}
 #jogajog{background:#f4ead5}#jogajog a{color:#6b4a0f}
 @media(max-width:760px){section{padding:34px 0}h2.t{margin-bottom:10px}.hero{padding:26px 0 34px}.svc{padding:14px 0}.svc:first-of-type{padding-top:6px}}
+#mn{display:none;background:none;border:0;color:#fff;padding:8px;line-height:0;cursor:pointer;border-radius:6px}#mn:hover{background:#ffffff22}
+@media(max-width:899px){#mn{display:block}nav{display:none;position:absolute;top:100%;right:10px;flex-direction:column;background:#fff;min-width:210px;border-radius:8px;box-shadow:0 8px 24px #0005;padding:6px;gap:0;margin-top:4px}nav.on{display:flex}nav a{color:var(--pine);padding:12px 14px;font-weight:500}nav a span{display:inline}nav a:hover{background:#e7efeb}}
+@media(max-width:760px){footer .wrap{justify-content:center!important;flex-direction:column;align-items:center;text-align:center;gap:6px!important}}
 </style>
 </head>
 <body>
 <header><div class="wrap"><a class="brand" href="#"><img id="lg" alt="" hidden><span id="bn">আমাদের অফিস</span></a>
-<nav aria-label="মেনু"><a href="#sheba" title="সেবাসমূহ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>সেবাসমূহ</span></a><a href="#abedon" data-open title="আবেদন"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M9 14h6M9 18h6"/></svg><span>আবেদন</span></a><a href="#" data-track title="আবেদনের অবস্থা"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>অবস্থা</span></a><a href="#jogajog" title="যোগাযোগ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg><span>যোগাযোগ</span></a></nav></div></header>
+<nav id="nv" aria-label="মেনু"><a href="#sheba" title="সেবাসমূহ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>সেবাসমূহ</span></a><a href="#abedon" data-open title="আবেদন"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M9 14h6M9 18h6"/></svg><span>আবেদন</span></a><a href="#" data-track title="আবেদনের অবস্থা"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>অবস্থা</span></a><a href="#jogajog" title="যোগাযোগ"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/></svg><span>যোগাযোগ</span></a></nav><button type="button" id="mn" aria-label="মেনু" aria-expanded="false" aria-controls="nv"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg></button></div></header>
 
 <div class="hero"><div class="wrap">
 <div>
@@ -118,7 +121,7 @@ const $=s=>document.querySelector(s);
 function fill(s){if(!s)return;
  if(s.siteName){$('#bn').textContent=$('#fn').textContent=s.siteName;document.title=s.siteName+' | হজ্জ, ওমরাহ, পাসপোর্ট ও ভিসা সেবা'}
  if(s.logo&&/^data:image\//.test(s.logo)){$('#lg').src=s.logo;$('#lg').hidden=false}
- const h=document.querySelector('.hero');if(s.hero&&/^data:image\//.test(s.hero)){h.style.backgroundImage='linear-gradient(rgba(10,45,40,.78),rgba(10,45,40,.78)),url("'+s.hero+'")'}else h.style.backgroundImage='';
+ const h=document.querySelector('.hero');if(s.hero&&/^data:image\//.test(s.hero)){h.style.backgroundImage='linear-gradient(rgba(10,45,40,.38),rgba(10,45,40,.38)),url("'+s.hero+'")'}else h.style.backgroundImage='';
  [['wp','cp',s.phone,v=>{$('#cp').href='tel:'+v}],['we','ce',s.email,v=>{$('#ce').href='mailto:'+v}],['wa','ca',s.address],['wh','ch',s.hours]].forEach(([w,t,v,f])=>{$('#'+w).hidden=!v;if(v){$('#'+t).textContent=v;f&&f(v)}});
  const so=$('#cs');so.innerHTML='';[['Facebook',s.facebook],['Instagram',s.instagram],['YouTube',s.youtube]].forEach(([n,u])=>{if(u&&/^https?:\/\//.test(u)){const a=document.createElement('a');a.href=u;a.textContent=n;a.target='_blank';a.rel='noopener';a.style.marginRight='14px';so.appendChild(a)}});
  $('#ws').hidden=!so.children.length}
@@ -163,6 +166,12 @@ function track(o){const p=$('#tp'),v=o===undefined?p.hidden:o;p.hidden=!v;$('#tk
 $('#tk').onclick=()=>track();document.querySelector('[data-track]').onclick=e=>{e.preventDefault();track()};
 $('#ac').onclick=()=>{$('#abedon').hidden=true;window.scrollTo({top:0,behavior:'smooth'})};
 $('#tf').onreset=()=>{$('#tr').style.display='none'};
+const mn=$('#mn'),nv=$('#nv');
+function menu(o){nv.classList.toggle('on',o);mn.setAttribute('aria-expanded',o)}
+mn.onclick=e=>{e.stopPropagation();menu(!nv.classList.contains('on'))};
+nv.addEventListener('click',()=>menu(false));
+document.addEventListener('click',e=>{if(!e.target.closest('#nv'))menu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')menu(false)});
 </script>
 </body>
 </html>

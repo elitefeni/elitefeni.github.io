@@ -4,9 +4,9 @@
 const SCH = {
   Applications: { h: ['আইডি','তারিখ','সেবা','নাম','ফোন','বিবরণ','স্ট্যাটাস','মোট বিল','জমা','নোট'], k: ['id','date','service','name','phone','details','status','bill','paid','note'] },
   Vouchers: { h: ['আইডি','ধরন','নম্বর','তারিখ','আইটেম','মোট','পরিশোধ','আবেদন আইডি'], k: ['id','type','no','date','items','total','paid','appId'] },
-  CashEntries: { h: ['আইডি','তারিখ','ধরন','আইটেম','মোট'], k: ['id','date','type','items','total'] },
+  CashEntries: { h: ['আইডি','তারিখ','ধরন','আইটেম','মোট','নম্বর'], k: ['id','date','type','items','total','no'] },
   Staff: { h: ['আইডি','নাম','পদবি','মোবাইল','ঠিকানা','যোগদান','মূল বেতন'], k: ['id','name','title','phone','address','joined','salary'] },
-  Salaries: { h: ['আইডি','তারিখ','স্টাফ আইডি','স্টাফ','মাস','পরিমাণ','নোট'], k: ['id','date','staffId','staffName','month','amount','note'] },
+  Salaries: { h: ['আইডি','তারিখ','স্টাফ আইডি','স্টাফ','মাস','পরিমাণ','নোট','নম্বর'], k: ['id','date','staffId','staffName','month','amount','note','no'] },
   Admins: { h: ['আইডি','নাম','পদবি','মোবাইল','ইমেইল','ঠিকানা','হ্যাশ','সল্ট'], k: ['id','name','title','phone','email','address','hash','salt'] },
   Settings: { h: ['কী','মান'], k: ['key','value'] },
   Services: { h: ['আইডি','সেবার নাম','বিবরণ','ফিল্ড'], k: ['id','name','desc','fields'] },
@@ -79,15 +79,15 @@ const CLEAN = {
     return { type, no: old ? old.no : (type === 'আয়' ? 'R-' : 'V-') + pad(cnt(type === 'আয়' ? 'R' : 'V')), date: tx(r.date, 10) || today(), items, total,
       paid: type === 'ব্যয়' ? Math.min(total, Math.max(0, Number(r.paid) || 0)) : 0, appId: old ? old.appId : '' };
   },
-  cash(r) { const items = amtItems(r.items); return { date: tx(r.date, 10) || today(), type: r.type === 'উত্তোলন' ? 'উত্তোলন' : 'জমা', items, total: items.reduce((t, x) => t + x.a, 0) }; },
+  cash(r, old) { const items = amtItems(r.items); return { date: tx(r.date, 10) || today(), type: r.type === 'উত্তোলন' ? 'উত্তোলন' : 'জমা', items, total: items.reduce((t, x) => t + x.a, 0), no: old && old.no ? old.no : 'C-' + pad(cnt('C')) }; },
   staff(r) {
     if (!tx(r.name, 100)) throw new Error('নাম দিন');
     return { name: tx(r.name, 100), title: tx(r.title, 60), phone: tx(r.phone, 20), address: tx(r.address, 200), joined: tx(r.joined, 10) || today(), salary: Number(r.salary) || 0 };
   },
-  salary(r) {
+  salary(r, old) {
     const st = rows('Staff').find(x => x.id === r.staffId); if (!st) throw new Error('স্টাফ বেছে নিন');
     const a = Number(r.amount); if (!(a > 0)) throw new Error('সঠিক পরিমাণ দিন');
-    return { date: tx(r.date, 10) || today(), staffId: st.id, staffName: st.name, month: tx(r.month, 7), amount: a, note: tx(r.note, 200) };
+    return { date: tx(r.date, 10) || today(), staffId: st.id, staffName: st.name, month: tx(r.month, 7), amount: a, note: tx(r.note, 200), no: old && old.no ? old.no : 'S-' + pad(cnt('S')) };
   },
   admin(r, old) {
     const name = tx(r.name, 100), phone = tx(r.phone, 20), pw = String(r.password || '');
@@ -156,7 +156,7 @@ function route(d) {
     seed();
     return { ok: true, me: who, apps: rows('Applications').reverse(), vouchers: rows('Vouchers').reverse(), cash: rows('CashEntries').reverse(), staff: rows('Staff'), salaries: rows('Salaries').reverse(),
       admins: rows('Admins').map(a => ({ id: a.id, name: a.name, title: a.title, phone: a.phone, email: a.email, address: a.address })),
-      services: rows('Services'), packages: rows('Packages'), settings: settings(), next: { R: 'R-' + pad(cnt('R', true)), V: 'V-' + pad(cnt('V', true)) } };
+      services: rows('Services'), packages: rows('Packages'), settings: settings(), next: { R: 'R-' + pad(cnt('R', true)), V: 'V-' + pad(cnt('V', true)), C: 'C-' + pad(cnt('C', true)), S: 'S-' + pad(cnt('S', true)) } };
   }
   if (d.action === 'updateApp') {
     const r = findRow('Applications', d.id); if (!r) return { ok: false, error: 'আবেদন পাওয়া যায়নি' };
